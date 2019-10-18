@@ -1,0 +1,96 @@
+.uno {
+    background-color: rgb(228, 219, 141);
+}
+.fila {
+    height: -webkit-fill-available;
+}
+h1 {
+    text-align: center;
+    font-family: 'Lobster', cursive;
+    font-size: 4.2rem;
+}
+.dos{
+    background-color: salmon;
+}
+#id, #nombre, #precio, #cantidad, #descripcion, #btn, .btn, #borrar, #btnBorrar,  #btnInvertir{
+    border-radius: 15px;
+}
+#btn, #btnBorrar, #btnInvertir {
+    background: salmon;
+}
+th {
+    text-align: center;
+    background-color: rgb(228, 219, 141);
+}
+ tr{
+    text-align: center;
+}
+#id:hover, #nombre:hover, #precio:hover, #cantidad:hover, #descripcion:hover, #borrar:hover, #borrarBtn:hover {
+    border-color: salmon;
+}
+#btn:hover, #borrarBtn:hover, .btn:hover {
+    border-color: black;
+}
+
+.tarjeta{
+    background-color: rgb(228, 219, 141);
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+
+/* Botones de orden */ 
+.s {
+  position: absolute;
+  bottom: 1%;
+  left: 13%;
+  background: salmon;
+  height: 40px;
+  border-radius: 40px;
+  padding: 10px;
+  box-sizing: initial;
+ }
+ 
+ .s:hover > .s-txt {
+  width: 290px;
+  padding: 0 6px;
+ }
+ 
+ .s:hover > .se-btn {
+  background: black;
+  color: black;
+ }
+ 
+ .se-btn {
+  color: #e84118;
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+  color: black;
+  cursor: pointer;
+ }
+ 
+ .se-btn > i {
+  font-size: 30px;
+  color: white;
+ }
+ 
+ .s-txt {
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: black;
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 40px;
+  width: 0px;
+  font-weight: bold;
+ }
