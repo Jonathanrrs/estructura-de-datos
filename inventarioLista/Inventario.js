@@ -44,6 +44,11 @@ export default class Inventario {
     this.getInventarioString(this._inicio);
   }
 
+  imprimirInventarioInverso() {
+    this._inventarioString = "";
+    this.invertir(this._inicio);
+  }
+
   buscar(id, inicio) {
     while (inicio != null) {
       if (inicio.id == id) {
@@ -64,14 +69,15 @@ export default class Inventario {
    }
   }
 
-  /*invertir(producto) {
-    if(this.buscar(producto.id, this._inicio)== -1) {
-      return 1;
+ 
+  invertir(inicio) {
+    if(inicio != null) {
+      if(inicio.siguiente != null) {
+        this.invertir(inicio.siguiente);
+      }
+      this._inventarioString += inicio.toString() + "<br>";
     }
-    else{
-      return this.invertir(producto-1);
-    }
-  }*/
+  }
 
   borrar(id) {
     if(this._inicio.id == id) {
@@ -101,4 +107,31 @@ export default class Inventario {
     return -1;
   }
 
+  buscarAnterior(posicion, inicio) {
+    for (let i = 1; i < posicion + 1; i++) {
+      if(i == posicion - 1) {
+        return inicio;
+      }
+      inicio = inicio.siguiente;
+      
+    }
+  }
+
+  agregarProductoEnPosicion(producto, posicion) {
+    if(this.buscar(producto.id, this._inicio) == -1) {
+      if(posicion == 1) {
+        producto.siguiente = this._inicio;
+        this._inicio = producto;
+      }
+      else{
+        let productoAnterior = this.buscarAnterior(posicion, this._inicio);
+        if(productoAnterior.siguiente == null) {
+          this._ultimo = producto;
+        }
+        producto.siguiente = productoAnterior.siguiente;
+        productoAnterior.siguiente = producto;
+      }
+    }
+  }
+  
 }

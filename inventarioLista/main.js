@@ -5,13 +5,13 @@ let btnAgregar = document.querySelector("#btn"),
     btnInvertir = document.querySelector("#btnInvertir"),
     btnBorrar = document.querySelector("#btnBorrar"),
     btnBuscar = document.querySelector("#btnBuscar"),
-    divInventario = document.querySelector("#inventario");
+    divInventario = document.querySelector("#inventario"),
+    btnPosicion = document.querySelector("#btnPosicion");
 
     btnAgregar.addEventListener("click", () => {
-        m.agregarProductoNuevo();
+        m.agregarProductoNuevo(m.extraerHtml());
         m.reset();
-        console.log(m._inventarioTotal);
-        
+          
     });
 
     btnInvertir.addEventListener("click", () => {
@@ -26,25 +26,31 @@ let btnAgregar = document.querySelector("#btn"),
     btnBuscar.addEventListener("click", () => {
         m.buscarProductoInv(document.querySelector("#buscar").value);
      });
+
+     btnPosicion.addEventListener("click", () => {
+         let datos = m.extraerHtml();
+         let posicion = document.querySelector("#posicion").value;
+         m.insertarProducto(datos, posicion);
+     });
     class Main {
         constructor() {
             this._inventarioTotal = new Inventario();
           
         }
         extraerHtml() {
-            let objNuevoProducto = {
+            let nuevoProducto = {
                 id: document.querySelector("#id").value,
                 nombre: document.querySelector("#nombre").value,
                 precio: document.querySelector("#precio").value,
                 cantidad: document.querySelector("#cantidad").value,
                 descripcion: document.querySelector("#descripcion").value
             }
+            let objNuevoProducto = new Producto(nuevoProducto);
             return objNuevoProducto;
         }
 
-        agregarProductoNuevo() {
-            let producto = new Producto(this.extraerHtml());
-            this._inventarioTotal.agregarProducto(producto);
+        agregarProductoNuevo(objNuevoproducto) {
+            this._inventarioTotal.agregarProducto(objNuevoproducto);
             this.mostrarInventario();
         }
         reset() {
@@ -57,8 +63,8 @@ let btnAgregar = document.querySelector("#btn"),
        }
        
        invertirLista() {
-           invertir(producto);
-           this.mostrarInventario();
+           this._inventarioTotal.imprimirInventarioInverso();
+           divInventario.innerHTML = this._inventarioTotal.inventarioString;
        }
 
        borrarDeInventario(id) {
@@ -70,6 +76,11 @@ let btnAgregar = document.querySelector("#btn"),
            this._inventarioTotal.buscarProducto(id);
        }
        
+       insertarProducto(producto, posicion) {
+
+           this._inventarioTotal.agregarProductoEnPosicion(producto, posicion);
+           this.mostrarInventario();
+       }
 
     }
 
