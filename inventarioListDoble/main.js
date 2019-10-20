@@ -8,23 +8,27 @@ let btnAgregar = document.querySelector("#btn"),
     divInventario = document.querySelector("#inventario");
 
     btnAgregar.addEventListener("click", () => {
-        m.agregarProductoNuevo();
+        m.agregarProductoNuevo(m.extraerHtml());
         m.reset();
-        console.log(m._inventarioTotal);
+      
+        //console.log(m._inventarioTotal);
         
     });
 
     btnInvertir.addEventListener("click", () => {
-        m.invertirLista();
+     m.mostrarInventarioInverso();
         
     });
 
     btnBorrar.addEventListener("click", () => {
-       m.borrarDeInventario(document.querySelector("#borrar").value);
+      m.eliminar(document.querySelector("#borrar").value);
+      
     });
     
     btnBuscar.addEventListener("click", () => {
-        m.buscarProductoInv(document.querySelector("#buscar").value);
+        m.buscarProducto(document.querySelector("#buscar").value);
+   
+        
      });
     class Main {
         constructor() {
@@ -32,19 +36,20 @@ let btnAgregar = document.querySelector("#btn"),
           
         }
         extraerHtml() {
-            let objNuevoProducto = {
+            let nuevoProducto = {
                 id: document.querySelector("#id").value,
                 nombre: document.querySelector("#nombre").value,
                 precio: document.querySelector("#precio").value,
                 cantidad: document.querySelector("#cantidad").value,
                 descripcion: document.querySelector("#descripcion").value
             }
+
+            let objNuevoProducto = new Producto(nuevoProducto);
             return objNuevoProducto;
         }
 
-        agregarProductoNuevo() {
-            let producto = new Producto(this.extraerHtml());
-            this._inventarioTotal.agregarProducto(producto);
+        agregarProductoNuevo(objNuevoProducto) {
+            this._inventarioTotal.agregarProducto(objNuevoProducto);
             this.mostrarInventario();
         }
         reset() {
@@ -52,24 +57,25 @@ let btnAgregar = document.querySelector("#btn"),
         }
         
        mostrarInventario() {
-           this._inventarioTotal.imprimirInventario();
+           this._inventarioTotal.imprimir();
            divInventario.innerHTML = this._inventarioTotal.inventarioString;
        }
-       
-       invertirLista() {
-           invertir(producto);
+       mostrarInventarioInverso() {
+        this._inventarioTotal.imprimirInverso();
+        divInventario.innerHTML = this._inventarioTotal.inventarioString;
+       }
+
+       eliminar(id) {
+           this._inventarioTotal.eliminarProducto(id);
            this.mostrarInventario();
        }
 
-       borrarDeInventario(id) {
-           this._inventarioTotal.borrar(id);
-           this.mostrarInventario();
-       }
-
-       buscarProductoInv(id) {
-           this._inventarioTotal.buscarProducto(id);
+       buscarProducto(id) {
+        this._inventarioTotal.buscar(id);
+        this.mostrarInventario();
        }
        
+
 
     }
 
