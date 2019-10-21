@@ -132,21 +132,21 @@ export default class Inventario {
     this.tamaño--;
     return valorARgresar;
   }
-  
+
   eliminarProducto(id) {
     console.log(id);
-    
+
     let actual = this._inicio;
     let ant = null;
     while (actual !== null) {
       if (actual.id == id) {
         console.log("entra");
-        if(!ant) {
+        if (!ant) {
           return this.eliminarDeinicio();
         }
-        else if(!actual.siguiente) {
+        else if (!actual.siguiente) {
           return this.eliminarDeFinal();
-        } else{
+        } else {
           ant.siguiente = actual.siguiente;
           actual.siguiente.anterior = ant;
         }
@@ -157,20 +157,28 @@ export default class Inventario {
     return null;
   }
 
-  /*buscar(id) {
+  buscar(id) {
     let actual = this._inicio;
     let ant = null;
     while (actual !== null) {
       if (actual.id == id) {
-        console.log("entra");
+        if(!ant) {
+          alert(actual);
+        }
+        else if(!actual.siguiente) {
+          alert(actual);
+        }
+        else{
           ant.siguiente = actual.siguiente;
           actual.siguiente.anterior = ant;
+          alert(actual);
+        }
       }
       ant = actual;
       actual = actual.siguiente;
     }
     return null;
-  }*/
+  }
 
 
 }
