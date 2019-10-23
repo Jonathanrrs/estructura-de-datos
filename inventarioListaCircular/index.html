@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lista Enlazada</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="estilo.css">
+</head>
+
+<body>
+    <div class="container-fluid" id="cont">
+        <div class="row fila" id="app">
+            <div class="col-3 uno">
+                <div class="container-fluid">
+                    <div id="titulo" class="p-2">
+                        <h1><i class="fas fa-tasks"></i>Registro</h1>
+                    </div>
+                    <form class="form" id="formulario">
+                        <div>
+                            <label>ID de la base</label>
+                            <input type="number" id="id" placeholder="Escriba el ID" class="form-control">
+                        </div>
+                        <div>
+                            <label>Nombre de la base</label>
+                            <input type="text" id="nombre" placeholder="Escriba el nombre" class="form-control">
+                        </div>
+                        <div>
+                            <label>Minutos</label>
+                            <input type="number" id="minutos" placeholder="Escriba los minutos" class="form-control">
+                        </div>
+                        <div class="p-2">
+                            <button type="button" class="btn btn-block" id="btn">Registrar</button>
+                        </div>
+                        <div class="p-2">
+                            <button type="button" class="btn btn-block" id="btnInvertir">Invertir lista</button>
+                        </div>
+                        <div>
+                            <label>Borrar artículo</label>
+                            <input type="text" id="borrar" placeholder="Borrar producto por ID" class="form-control">
+                        </div>
+                        <div class="p-2">
+                            <button type="button" class="btn btn-block" id="btnBorrar">Borrar</button>
+                        </div>
+                        <div class="s">
+                            <input type="number" id="buscar" class="s-txt" placeholder="Buscar" />
+                            <a class="se-btn">
+                                <i id="btnBuscar" class="fas fa-search"></i>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-9 dos">
+                <div>
+                    <h1>Inventario</h1>
+                </div>
+                <div class="p-4">
+                    <div id="inventario" class="tarjeta"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="main.js" type="module"></script>
+
+</html>
