@@ -18,7 +18,12 @@ export default class Base{
     get minutos() {
         return this._minutos;
     }
-    
+    get siguiente() {
+        return this._siguiente;
+    }
+    get anterior() {
+        return this._anterior;
+    }
 
     set siguiente(valor) {
         this._siguiente = valor;
@@ -29,6 +34,6 @@ export default class Base{
     }
 
     toString() {
-        return `Código: ${this._id}, Nombre: ${this._nombre}, Minutos: ${this._minutos}`;
+        return `Código: ${this._id}, Minutos de la última base: ${this._minutos}`;
     }
 }

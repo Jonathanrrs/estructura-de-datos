@@ -2,37 +2,34 @@ import Ruta from "./Ruta.js";
 import Base from "./Base.js";
 
 let btnAgregar = document.querySelector("#btn"),
-    btnInvertir = document.querySelector("#btnInvertir"),
     btnBorrar = document.querySelector("#btnBorrar"),
     btnBuscar = document.querySelector("#btnBuscar"),
-    divInventario = document.querySelector("#inventario");
+    divBase = document.querySelector("#inventario"),
+    horaInicio = document.querySelector("#horaInicio"),
+    horaFin = document.querySelector("#horaFin"),
+    minUltiumaBase = document.querySelector("#minutos")
 
     btnAgregar.addEventListener("click", () => {
-        m.agregarProductoNuevo(m.extraerHtml());
+        m.agregarBaseNueva(m.extraerHtml());
         m.reset();
       
         //console.log(m._inventarioTotal);
         
     });
 
-    btnInvertir.addEventListener("click", () => {
-     m.mostrarInventarioInverso();
-        
-    });
 
     btnBorrar.addEventListener("click", () => {
-     
-      
+     m.borrar(document.querySelector("#borrar"))
     });
     
     btnBuscar.addEventListener("click", () => {
-
+        m.busqueda(document.querySelector("#buscar").value);
    
         
      });
     class Main {
         constructor() {
-            this._RutaTotal = new Ruta();
+            this._rutaTotal = new Ruta();
           
         }
         extraerHtml() {
@@ -46,22 +43,27 @@ let btnAgregar = document.querySelector("#btn"),
             return objNuevoBase;
         }
 
-        agregarBaseNuevo(objNuevoBase) {
-            this._RutaTotal.agregarProducto(objNuevoBase);
-            this.mostrarInventario();
+        agregarBaseNueva(objNuevoBase) {
+            this._rutaTotal.agregarBase(objNuevoBase);
+            this.mostrarBase();
         }
         reset() {
             document.querySelector("#formulario").reset();
         }
         
-       mostrarInventario() {
-           this._RutaTotal.imprimir();
-           divInventario.innerHTML = this._RutaTotal.inventarioString;
+       mostrarBase() {
+           this._rutaTotal.imprimir();
+           divBase.innerHTML = this._rutaTotal.baseString;
        }
-       mostrarInventarioInverso() {
-        this._RutaTotal.imprimirInverso();
-        divInventario.innerHTML = this._RutaTotal.inventarioString;
+
+       busqueda(nombre) {
+           this._rutaTotal.buscarBase(nombre);
        }
+       borrar(nombre) {
+           this._rutaTotal.borrarBase(nombre);
+           this.mostrarBase;
+       }
+      
 
      
 
