@@ -12,7 +12,7 @@ export default class Inventario {
             this._raiz = producto;
         }
         else {
-           this._agregar(producto, this._raiz);
+            this._agregar(producto, this._raiz);
         }
 
 
@@ -27,13 +27,68 @@ export default class Inventario {
                 this._agregar(producto, raiz.izquierda);
             }
         }
-        else{
-            if(raiz.derecha == null) {
+        else {
+            if (raiz.derecha == null) {
                 raiz.derecha = producto;
             }
-            else{
+            else {
                 this._agregar(producto, raiz.derecha);
             }
         }
     }
+
+    inOrder() {
+        this._inventarioString = "";
+        this._inOrder(this._raiz);
+        return this._inventarioString;
+    }
+
+    _inOrder(raiz) {
+        if(raiz ==null) {
+            return;
+        }
+        else{
+            this._inOrder(raiz.izquierda);
+            this.inventarioString += raiz.toString();
+            this._inOrder(raiz.derecha);
+        }
+    }
+
+    preOrder() {
+        this._inventarioString = "";
+        this._preOrder(this._raiz);
+        return this._inventarioString ;
+
+    }
+
+    _preOrder(raiz) {
+        if(raiz == null) {
+            return;
+        }
+        else{
+            this._inventarioString += raiz.toString();
+            this._preOrder(raiz.izquierda);
+            this._preOrder(raiz.derecha);
+        }
+    }
+
+    
+    postOrder() {
+        this._inventarioString = "";
+        this._postOrder(this._raiz);
+        return this._inventarioString ;
+
+    }
+
+    _postOrder(raiz) {
+        if(raiz == null) {
+            return;
+        }
+        else{
+            this._preOrder(raiz.izquierda);
+            this._preOrder(raiz.derecha);
+            this._inventarioString += raiz.toString(); 
+        }
+    }
+    
 }

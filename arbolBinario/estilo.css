@@ -12,10 +12,10 @@ h1 {
 .dos{
     background-color: salmon;
 }
-#id, #nombre, #precio, #cantidad, #descripcion, #btn, .btn, #borrar, #btnBorrar,  #btnInvertir{
+#id, #nombre, #precio, #cantidad, #descripcion, #btn, .btn, #borrar, #btnBorrar,  #btnInvertir, #btnIn, #btnPre, #btnPost{
     border-radius: 15px;
 }
-#btn, #btnBorrar, #btnInvertir {
+#btn, #btnBorrar, #btnIn, #btnPre, #btnPost {
     background: salmon;
 }
 th {
@@ -25,10 +25,10 @@ th {
  tr{
     text-align: center;
 }
-#id:hover, #nombre:hover, #precio:hover, #cantidad:hover, #descripcion:hover, #borrar:hover, #borrarBtn:hover {
+#id:hover, #nombre:hover, #precio:hover, #cantidad:hover, #descripcion:hover {
     border-color: salmon;
 }
-#btn:hover, #borrarBtn:hover, .btn:hover {
+#btn:hover, #borrarBtn:hover, .btn:hover, #btnIn:hover, #btnPre:hover, #btnPost:hover {
     border-color: black;
 }
 

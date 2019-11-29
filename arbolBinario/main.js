@@ -3,6 +3,9 @@ import Producto from "./Producto.js";
 
 let btnAgregar = document.querySelector("#btn"),
     btnBuscar = document.querySelector("#btnBuscar"),
+    btnInOrder = document.querySelector("#btnIn"),
+    btnPreOrder = document.querySelector("#btnIn"),
+    btnPostOrder= document.querySelector("#btnIn"),
     divInventario = document.querySelector("#inventario");
 
     btnAgregar.addEventListener("click", () => {
@@ -13,6 +16,18 @@ let btnAgregar = document.querySelector("#btn"),
         
     });
 
+    btnInOrder.addEventListener("click", () => {
+        m.imprimirInOrden();
+   
+     });
+     btnPreOrder.addEventListener("click", () => {
+         m.imprimirPreOrder();
+   
+     });
+     btnPostOrder.addEventListener("click", () => {
+         m.imprimirPostOrder();
+   
+     });
     btnBuscar.addEventListener("click", () => {
         m.buscarProducto(document.querySelector("#buscar").value);
    
@@ -42,19 +57,19 @@ let btnAgregar = document.querySelector("#btn"),
         reset() {
             document.querySelector("#formulario").reset();
         }
-        
-       /*mostrarInventario() {
-           this._inventarioTotal.imprimir();
-           divInventario.innerHTML = this._inventarioTotal.inventarioString;
-       }*/
-      
-       /*buscarProducto(id) {
-        this._inventarioTotal.buscar(id);
-        this.mostrarInventario();
-       }*/
+        imprimirInOrder() {
+            this._inventarioTotal.inOrder();
+            divInventario.innerHTML = this._inventarioTotal.inventarioString;
+        }
+        imprimirPreOrder() {
+            this._inventarioTotal.preOrder();
+            divInventario.innerHTML = this._inventarioTotal.inventarioString;
+        }
+        imprimirPostOrder() {
+            this._inventarioTotal.postOrder();
+            divInventario.innerHTML = this._inventarioTotal.inventarioString;
+        }
        
-
-
     }
 
     let m = new Main();
