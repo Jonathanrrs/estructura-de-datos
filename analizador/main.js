@@ -19,7 +19,7 @@ class main {
             let pila = [];
             operacion.pop();
             let inicio = 0;
-            for (let o = operacion.length - 1; i >= 0; i--) {
+            for (let i = operacion.length - 1; i >= 0; i--) {
                 switch (operacion[i]) {
                     case "*":
                         inicio = pila.pop();
